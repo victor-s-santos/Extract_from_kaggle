@@ -16,5 +16,8 @@
     - `python -m venv .venv`
     - `source .venv/bin/activate`
 
-* __V. Run the python main file:__
+* __V. Install dependencies:__
+    - `pip install -r requirements.txt`
+
+* __VI. Run the python main file:__
     - `python main.py`
