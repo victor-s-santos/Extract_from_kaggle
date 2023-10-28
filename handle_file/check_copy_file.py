@@ -1,6 +1,7 @@
 import os
 import shutil
 
+
 def check_file_exists() -> bool:
     """Checks if the kaggle.json file exists in current directory.
 
@@ -9,6 +10,7 @@ def check_file_exists() -> bool:
     """
     file = "kaggle.json"
     return os.path.isfile(file)
+
 
 def copy_file() -> str:
     """Copy the kaggle.json file to necessary destination.
@@ -19,9 +21,11 @@ def copy_file() -> str:
     kaggle_path = f"/home/{os.getlogin()}/.kaggle"
     try:
         shutil.copyfile("kaggle.json", f"{kaggle_path}/kaggle.json")
-        return (f"The file can be find in the following location: {kaggle_path}/kaggle.json")
+        return (
+            f"The file can be find in the following location: {kaggle_path}/kaggle.json"
+        )
     except Exception as e:
-        return(e)
+        return e
 
 
 if __name__ == "__main__":
