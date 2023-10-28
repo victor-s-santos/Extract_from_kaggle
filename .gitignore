@@ -1,2 +1,4 @@
 *.venv/
-kaggle.json
+*kaggle.json
+*.pyc
+*__pycache__/
