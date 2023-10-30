@@ -1,4 +1,3 @@
-import os
 from handle_path.check_create_directory import (
     check_directory_exists,
     create_kaggle_directory,
@@ -17,3 +16,7 @@ if __name__ == "__main__":
 
         if check_file_exists():
             copy_file()
+
+            from handle_csv.export_csv import download_csv
+
+            download_csv(dataset_owner="joebeachcapital", dataset_name="fast-food")
