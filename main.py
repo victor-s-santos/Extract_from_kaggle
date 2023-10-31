@@ -1,22 +1,11 @@
-from handle_path.check_create_directory import (
-    check_directory_exists,
-    create_kaggle_directory,
-)
-from handle_file.check_copy_file import check_file_exists, copy_file
-
-dataset_name = "joebeachcapital/fast-food"
-
-destination_path = "."
-
-unzip = True
+from handle_csv.export_csv import download_csv
+from decouple import config
 
 if __name__ == "__main__":
-    if not check_directory_exists():
-        create_kaggle_directory()
-
-        if check_file_exists():
-            copy_file()
-
-            from handle_csv.export_csv import download_csv
-
-            download_csv(dataset_owner="joebeachcapital", dataset_name="fast-food")
+    dict_credentials = {"username": config("KAGGLE_USER"), "key": config("KAGGLE_KEY")}
+    full_dict = {
+        "credentials": dict_credentials,
+        "dataset_owner": "joebeachcapital",
+        "dataset_name": "fast-food",
+    }
+    download_csv(**full_dict)
