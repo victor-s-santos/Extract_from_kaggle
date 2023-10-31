@@ -2,3 +2,5 @@
 *kaggle.json
 *.pyc
 *__pycache__/
+*.env
+*.zip

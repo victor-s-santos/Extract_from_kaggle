@@ -1,15 +1,37 @@
-import kaggle
+import os
 
 
-def download_csv(dataset_owner: str, dataset_name: str):
+def download_csv(credentials: dict, dataset_owner: str, dataset_name: str):
+    os.environ["KAGGLE_USERNAME"] = credentials["username"]
+    os.environ["KAGGLE_KEY"] = credentials["key"]
+    from kaggle.api.kaggle_api_extended import KaggleApi
+
     try:
-        kaggle.api.dataset_download_files(
-            dataset=f"{dataset_owner}/{dataset_name}", path=".", unzip=False
-        )
-        return "Your dataset has {dataset_name} been downloaded successfully!"
+        api = KaggleApi()
+        api.authenticate()
     except Exception as e:
-        return f"An error: {e}"
+        raise Exception(f"An error: {e}")
+
+    try:
+        datasets = api.dataset_list(search=f"{dataset_owner}/{dataset_name}")
+
+        for dataset in datasets:
+            api.dataset_download_files(
+                dataset=dataset.ref, path=".", force=False, unzip=False
+            )
+
+        print("The dataset has been downloaded successfully!")
+    except Exception as e:
+        raise Exception(f"An error: {e}")
 
 
 if __name__ == "__main__":
-    download_csv(dataset_owner="joebeachcapital", dataset_name="fast-food")
+    from decouple import config
+
+    dict_credentials = {"username": config("KAGGLE_USER"), "key": config("KAGGLE_KEY")}
+    full_dict = {
+        "credentials": dict_credentials,
+        "dataset_owner": "joebeachcapital",
+        "dataset_name": "fast-food",
+    }
+    download_csv(**full_dict)
