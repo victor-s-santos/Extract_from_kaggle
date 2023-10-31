@@ -19,5 +19,8 @@
 * __V. Install dependencies:__
     - `pip install -r requirements.txt`
 
-* __VI. Run the python main file:__
+* __VI. Create your env file:__
+    - `Use the env_sample file to create your env`
+
+* __VII. Run the python main file:__
     - `python main.py`
