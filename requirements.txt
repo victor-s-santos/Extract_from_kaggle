@@ -1,3 +1,4 @@
 kaggle==1.5.16
 pip-chill==1.0.3
+pymongo==4.6.0
 python-decouple==3.8

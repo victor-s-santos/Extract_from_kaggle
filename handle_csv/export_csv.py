@@ -17,7 +17,7 @@ def download_csv(credentials: dict, dataset_owner: str, dataset_name: str):
 
         for dataset in datasets:
             api.dataset_download_files(
-                dataset=dataset.ref, path=".", force=False, unzip=False
+                dataset=dataset.ref, path=".", force=False, unzip=True
             )
 
         print("The dataset has been downloaded successfully!")
