@@ -16,11 +16,14 @@
     - `python -m venv .venv`
     - `source .venv/bin/activate`
 
-* __V. Install dependencies:__
+* __V. Build the mongo image:__
+    - `docker compose up`
+
+* __VI. Install dependencies:__
     - `pip install -r requirements.txt`
 
-* __VI. Create your env file:__
+* __VII. Create your env file:__
     - `Use the env_sample file to create your env`
 
-* __VII. Run the python main file:__
+* __VIII. Run the python main file:__
     - `python main.py`
